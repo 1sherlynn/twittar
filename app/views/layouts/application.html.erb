@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twittar</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+	<div class="container">
+<!-- flash start --> 
+  	<% flash.each do |name, msg| %>
+  		<%= content_tag :div, msg, class: "alert alert-info"%>
+  	 <% end %>
+<!-- flash end --> 
+
+
+<!-- yield start --> 
+    	<%= yield %>
+<!-- yield start --> 
+    </div>
+
+  </body>
+
+</html>
