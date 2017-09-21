@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
 	 def index 
 	    @tweets = Tweet.all.order("created_at DESC")
 	    @newTweet = Tweet.new
-	    @toFollow = User.all.last(10)
+	    @latestUsers = User.all.last(10)
 	  end
 
 	def home

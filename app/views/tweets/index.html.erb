@@ -97,8 +97,8 @@
         <div class="panel panel-default">
           <div class="panel-body">
              <h5 style="color: grey; font-size: 125%;">Who to follow</h5>
-             <% for follow in @toFollow do %>
-               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= follow.email %>"><%= follow.email %></a></p>
+             <% for user in @lastestUsers do %>
+               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= user.email %>"><%= user.email %></a></p>
         <% end %>
           </div>
         </div>
