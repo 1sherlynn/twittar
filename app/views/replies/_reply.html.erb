@@ -1,5 +1,18 @@
 <%= form_for [reply.tweet, reply.new] do |f| %>
-   <%= f.hidden_field :user_id, reply.user.id %>
+  <!--  <%= f.hidden_field :user_id, reply.user.id %>
    <%= f.text_field :body %>
-   <%= f.submit %>
+   <%= f.submit, class: "btn btn-primary" %> -->
+
+<div class="field" style="margin-left: 10px;">
+	 <%= f.hidden_field :user_id, @reply.user.id, class: "form-control", placeholder: "Add a Reply"%>
+	 <%= f.text_field :body %>
+	 <span type="button" class="btn btn-submit" style="float: right; margin-top: 3px;"><%= f.submit "Reply", class: "btn btn-primary" %></span>
+</div>
+
+
+
+
 <% end %>
+
+
+

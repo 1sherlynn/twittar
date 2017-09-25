@@ -71,17 +71,28 @@
                 <a href="#"><span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-heart  g-links-heart" aria-hidden="true" style="color:#e0245e"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-envelope g-links" aria-hidden="true"></span></a>
+<!-- reply start --> 
+                
 
-                <% @tweet.replies.each do |reply| %>
-      				      <%= reply.body %>
+    <%= form_for @reply, url: tweet_replies_path(tweet_id: @tweet), method: :post do |f| %>
 
-      					<% end %>
+      <div class="field" style="margin-left: 10px;">
+         <%= f.text_field :body %>
+         <span type="button" class="btn btn-submit"; margin-top: 3px;"><%= f.submit "Reply", class: "btn btn-primary" %></span>
+      </div>
 
-                <%= form_for @reply, url: tweet_replies_path(tweet_id: @tweet), method: :post do |f| %>
+    <% end %>
+    
+    <div class="col-xs-11"> 
+      <% @tweet.replies.each do |reply| %>
+        <p><b><%= User.find(reply.user_id).email %>: </b>
+        <%= reply.body %></p>
+      <% end %>
+    </div>
 
-                   <%= f.text_field :body %>
-                   <%= f.submit %>
-                <% end %>
+          
+<!-- reply end -->
+               
               </p>
             </div>
 

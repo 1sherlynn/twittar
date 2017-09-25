@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
 	def create
 
 		tweet = Tweet.find(params[:tweet_id])
-		reply_params = params.require(:reply).permit(:userid, :body)
+		reply_params = params.require(:reply).permit(:user_id, :body)
 		reply = tweet.replies.new(reply_params)
 		reply.user_id = current_user.id
 		if reply.save
