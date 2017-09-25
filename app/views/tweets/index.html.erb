@@ -5,8 +5,7 @@
           <div class="panel-body">
             <h5 style="color: grey; font-size: 125%;">Home Page</h5>
             <p style="opacity: 0.5; font-size: 90%;">
-              This is TWITTAR's home page where anyone can view, including non-registered guests. For users who sign in, the index page will be rendered. HELLO EVERYONE
-            </p>
+              This is TWITTAR's home page where anyone can view, including non-registered guests. For users who sign in, the index page will be rendered.
           </div>
         </div>
         <div class="panel panel-default">
@@ -72,7 +71,17 @@
                 <a href="#"><span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-heart  g-links-heart" aria-hidden="true" style="color:#e0245e"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-envelope g-links" aria-hidden="true"></span></a>
-                <p><a href="#">View Replies</a></p>
+
+                <% @tweet.replies.each do |reply| %>
+      				      <%= reply.body %>
+
+      					<% end %>
+
+                <%= form_for @reply, url: tweet_replies_path(tweet_id: @tweet), method: :post do |f| %>
+
+                   <%= f.text_field :body %>
+                   <%= f.submit %>
+                <% end %>
               </p>
             </div>
 
@@ -97,7 +106,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
              <h5 style="color: grey; font-size: 125%;">Who to follow</h5>
-             <% for user in @lastestUsers do %>
+             <% for user in @latestUsers do %>
                <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= user.email %>"><%= user.email %></a></p>
         <% end %>
           </div>

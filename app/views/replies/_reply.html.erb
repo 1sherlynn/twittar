@@ -1,0 +1,5 @@
+<%= form_for [reply.tweet, reply.new] do |f| %>
+   <%= f.hidden_field :user_id, reply.user.id %>
+   <%= f.text_field :body %>
+   <%= f.submit %>
+<% end %>
