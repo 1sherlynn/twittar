@@ -3,5 +3,6 @@ class Tweet < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :tweet, presence: true, length: { maximum: 140 }
+
+  has_many :replies
 end
- 

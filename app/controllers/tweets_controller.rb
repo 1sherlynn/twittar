@@ -1,17 +1,20 @@
 class TweetsController < ApplicationController
 	before_action :authenticate_user! , except: [:index, :home]
 	before_action :find_tweet, only: [:show, :edit, :update, :destroy]
-	
-	 def index 
+
+	 def index
 	    @tweets = Tweet.all.order("created_at DESC")
 	    @newTweet = Tweet.new
 	    @latestUsers = User.all.last(10)
+			@reply = Reply.new
 	  end
 
 	def home
 	end
 
 	def show
+	
+		@replies = Reply.where(tweet_id: @id)
   	end
 
 	def new
@@ -45,7 +48,7 @@ class TweetsController < ApplicationController
 	end
 
 
-  
+
 	private
 	def tweet_params
 		params.require(:tweet).permit(:tweet, :avatar, :user_id)
