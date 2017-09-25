@@ -5,4 +5,6 @@ class Tweet < ApplicationRecord
   validates :tweet, presence: true, length: { maximum: 140 }
 
   has_many :replies
+
+  mount_uploader :avatar, AvatarUploader
 end
