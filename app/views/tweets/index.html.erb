@@ -61,7 +61,8 @@
             <%= user_avatar %>
             </div>
             <div class="col-xs-11">
-              <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@tweet.user_id).username %>"><%= User.find(@tweet.user_id).username %></a></span> <span class="post c-creation">- <%= @tweet.created_at.to_formatted_s(:short) %></span></p>
+              <p class="post-title"><span class="post-owner"><%= link_to User.find(@tweet.user_id).username, tweet_path(@tweet) %></a></span> 
+              <span class="post c-creation">- <%= @tweet.created_at.to_formatted_s(:short) %></span></p>
               <p class="post-content"><%= @tweet.tweet %></p>
             </div>
 
@@ -71,8 +72,7 @@
                 <a href="#"><span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span></a>
     
       <%= render "likes/like" %> 
-      
- 
+
 
     <%= form_for @reply, url: tweet_replies_path(tweet_id: @tweet), method: :post do |f| %>
 

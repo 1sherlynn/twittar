@@ -14,7 +14,10 @@ class TweetsController < ApplicationController
 	end
 
 	def show
-
+		@tweet = Tweet.find(params[:id])
+		@user = User.find(@tweet.user_id)
+		@tweets = @user.tweets
+		@newTweet = Tweet.new
 		@replies = Reply.where(tweet_id: @id)
   	end
 
