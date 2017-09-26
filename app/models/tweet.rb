@@ -6,5 +6,8 @@ class Tweet < ApplicationRecord
 
   has_many :replies
 
+
   mount_uploader :avatar, AvatarUploader
+  has_many :likes
+ 
 end
