@@ -14,6 +14,7 @@ class TweetsController < ApplicationController
 	end
 
 	def show
+
 		@replies = Reply.where(tweet_id: @id)
   	end
 
