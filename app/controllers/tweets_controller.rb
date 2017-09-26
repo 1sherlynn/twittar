@@ -11,7 +11,32 @@ class TweetsController < ApplicationController
 	  end
 
 	def home
-	end
+	    following = Array.new
+	    for @f in current_user.following do
+	      following.push(@f.id)
+	    end
+
+	    @tweets = Tweet.where("user_id IN (?)", following)
+	    @newTweet = Tweet.new
+	    @newReply = Reply.new
+   end
+
+    def profile
+    # grab the username from the URL as :id
+    if (User.find_by_username(params[:id]))
+      @username = params[:id]
+    else 
+      # redirect to 404 (root for now)
+      redirect_to root_path, :notice=> "User not found!" 
+    end
+
+   
+    @tweets = Tweet.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+    @newTweet = Tweet.new
+    
+    @toFollow = User.all.last(5)
+  end
+
 
 	def show
 		@tweet = Tweet.find(params[:id])
