@@ -6,14 +6,14 @@ class TweetsController < ApplicationController
 	    @tweets = Tweet.all.order("created_at DESC")
 	    @newTweet = Tweet.new
 	    @latestUsers = User.all.last(10)
-			@reply = Reply.new
+		@reply = Reply.new
+		@like = Like.all
 	  end
 
 	def home
 	end
 
 	def show
-	
 		@replies = Reply.where(tweet_id: @id)
   	end
 
@@ -57,4 +57,7 @@ class TweetsController < ApplicationController
 	def find_tweet
 		@tweet = Tweet.find(params[:id])
 	end
+
+
+
 end
