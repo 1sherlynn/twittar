@@ -1,4 +1,4 @@
-<span class="badge" id="count-display-<%= @tweet.id %>"><%= render 'likes/count' %></span>
+<span class="badge"><%= Like.where(tweet_id: @tweet.id).count %></span>
 
 
 <% if !Like.find_by(user_id: current_user, tweet_id: @tweet.id) %> 

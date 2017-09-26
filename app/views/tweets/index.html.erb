@@ -71,8 +71,9 @@
                 <a href="#"><span class="glyphicon glyphicon-comment g-links" aria-hidden="true"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span></a>
     
-      <%= render "likes/like" %> 
-
+      <div id = "likes_section-<%=@tweet.id%>">
+          <%= render "likes/like" %> 
+      </div>
 
     <%= form_for @reply, url: tweet_replies_path(tweet_id: @tweet), method: :post do |f| %>
 

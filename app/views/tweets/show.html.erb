@@ -76,7 +76,11 @@
               <p class="post-links">
                 <span class="glyphicon glyphicon-comment g-links" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-heart g-links" aria-hidden="true"></span>
+              
+                <span> <div id = "likes_section-<%=@tweet.id%>">
+                <%= render "likes/like" %> 
+                </div></span>
+
                 <span class="glyphicon glyphicon-option-horizontal g-links" aria-hidden="true"></span>
                 <a href="">View Replies</a>
 

@@ -1,4 +1,2 @@
-$('#count-display-<%= @tweet.id %>').html('<%= Like.where(tweet_id: @tweet.id).count %>');
-
-
+$("#likes_section-<%= @tweet.id %>").html('<%= j render 'likes/like' %>');
 
