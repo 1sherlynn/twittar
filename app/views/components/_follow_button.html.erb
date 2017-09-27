@@ -1,20 +1,30 @@
-<% if current_user.id != user.id %>
-    <div class="panel panel-default">
-        <div class="panel-body">
+<div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">
+    FOLLOWERS
+        <h6 style="color: #0084B4; font-size: 200%;">
+            <%= @user.followers.count %>
+        </h6>
+</div>
+
+<div class="col-sm-6" style="font-size: 80%; opacity: 0.7;">
+    FOLLOWING
+        <h6 style="color: #0084B4; font-size: 200%;">
+        <%= @user.following.count %>      
+        </h6>
+</div>
+
+<% if current_user.id != @user.id %>
             <center>
-                <% if !current_user.following?(user) %>
+                <% if !current_user.following?(@user) %>
                     <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-                        <div><%= hidden_field_tag :followed_id, user.id %></div>
-                        <%= f.submit "Follow", class: "btn btn-primary" %>
+                        <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                        <%= f.submit "Follow", class: "btn btn-primary btn-xs" %>
                     <% end %>
                 <% else %>
-                    <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),html:{ method: :delete }, remote: true) do |f| %>
-                        <%= f.submit "Unfollow", class: "btn" %>
+                    <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),html:{ method: :delete }, remote: true) do |f| %>
+                        <%= f.submit "Unfollow", class: "btn btn default btn-xs" %>
                     <% end %>
                 <% end %>
             </center>
-        </div>
-    </div>
 <% end %>
 
 
