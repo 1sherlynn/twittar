@@ -22,7 +22,7 @@
 
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "New Tweet", new_tweet_path %></li>
+              <li><%= link_to "New Tweet", root_path %></li>
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>
@@ -37,6 +37,35 @@
       </div>
     </div>
 <!-- navbar end --> 
+
+
+<!-- Header-->
+
+<% if params[:id] != nil %>
+  <% @url = '/user/' + params[:id] %>
+  <% if current_page?(@url) %>
+    
+    <div class="row">
+      <div class="col-sm-12" style="background-color: white;">
+        <div class="container">
+          <div class="col-sm-3">&nbsp;</div>
+          <div class="col-sm-6" style="margin-top: 5px">
+            <div class="col-sm-2" style="font-size: 100%; opacity: 0.7;">TWEETS<br>
+                    <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).tweets.count %></h6></div>
+            <div class="col-sm-2" style="font-size: 100%; opacity: 0.7;">FOLLOWERS<br>
+                    <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).followers.count %></h6></div>
+                    <div class="col-sm-2" style="font-size: 100%; opacity: 0.7;">FOLLOWING<br>
+                    <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).following.count %></h6></div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- /Header-->
+<br>
 
 
 	<div class="container">

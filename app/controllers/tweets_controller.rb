@@ -55,12 +55,15 @@ class TweetsController < ApplicationController
 	if (User.find_by_username(params[:id]))
 	    @username = params[:id]
 	else 
-	# redirect to 404 (root for now)
+	
 	    redirect_to root_path, :notice=> "User not found!" 
 	    end
 	    @tweets = Tweet.all.where("user_id = ?", User.find_by_username(params[:id]).id)
 	    @newTweet = Tweet.new
-	    @toFollow = User.all.last(5)
+	    @latestUsers = User.all.last(5)
+	    
+
+
   	end
 
 

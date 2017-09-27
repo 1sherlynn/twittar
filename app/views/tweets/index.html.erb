@@ -37,7 +37,7 @@
        <br>
 
       <!-- ALL TWEETS -->
-      <% for user in @users do %>
+    
         <% for @tweet in @tweets %>
         <div class="panel panel-default post-panel">
           <div class="panel-body row">
@@ -73,7 +73,7 @@
           </div>
         </div>
         <% end %>
-    <% end %>
+    
       <!-- /ALL TWEETS -->
 
         <div class="panel panel-default post-panel">
@@ -93,7 +93,7 @@
           <div class="panel-body">
              <h5 style="color: grey; font-size: 125%;">Who to follow</h5>
              <% for user in @latestUsers do %>
-               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= @tweet.id %>"><%= user.username %></a></p>
+               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= user.username %>"><%= user.username %></a></p>
         <% end %>
           </div>
         </div>

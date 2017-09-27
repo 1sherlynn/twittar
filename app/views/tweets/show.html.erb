@@ -5,7 +5,7 @@
         <div class="panel panel-default">
 
           <div class="panel-image" align = "center">
-            <%= user_avatar_profile %>
+            <%= user_avatar_large %>
           </div>
 
           <div class="panel-body">
@@ -54,17 +54,25 @@
               <p class="post-content"><%= @tweet.tweet %></p>
             </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-11 col-sm-offset-1">
               <p class="post-links">
-                <span class="glyphicon glyphicon-comment g-links" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span>
-              
+                
                 <span> <div id = "likes_section-<%=@tweet.id%>">
                 <%= render "likes/like" %> 
                 </div></span>
+                <br>
 
-                <span class="glyphicon glyphicon-option-horizontal g-links" aria-hidden="true"></span>
-                <a href="">View Replies</a>
+                  <div class = "col-md-8">
+            
+                   
+                    <% @tweet.replies.each do |reply| %>
+
+                          <p><b><%= User.find(reply.user_id).username %>:</b> 
+                          <%= reply.body %></p>
+                     <% end %>
+                </div>
+
+                
 
               </p>
             </div>
