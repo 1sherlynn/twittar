@@ -1,7 +1,6 @@
 module ApplicationHelper
 
 def user_avatar 
-
 if  @tweet.user.avatar.thumb.url.present?
 image_tag(@tweet.user.avatar.thumb.url)
 else

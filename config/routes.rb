@@ -19,9 +19,7 @@ resources :users do
   end
   resources :follows, only: [:create, :destroy]
 
-
- get '/home' => 'tweets#home' # override default routes.
-  get '/user/:id' => 'tweets#profile'
+  get '/user/:id' => 'tweets#show'
  
 
 end
