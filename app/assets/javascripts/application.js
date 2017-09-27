@@ -17,23 +17,3 @@
 // // require rails-ujs
 // //= require_tree .
 
-$( document ).ready(function (){
-    $('.unlike').on("click", function(){
-    		$('.glyphicon-heart').css("color", "lightgrey")})})
-    	 
-$( document ).ready(function (){
-    $('.like').on("click", function(){
-    		$('.glyphicon-heart').css("color", "red")})})
-    
-// $( document ).ready(function (){
-//     $('.glyphicon-heart').on("click", function(){
-//     	if ($('.glyphicon-heart').css("color") == 'rgb(255, 0, 0)') 
-//     	{
-//     		$('.glyphicon-heart').css("color", "lightgrey") 
-//     	} 
-
-//     	else {
-//     		$('.glyphicon-heart').css("color", "red") 
-//     	}
-//     });
-//    });
