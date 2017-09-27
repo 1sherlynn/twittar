@@ -22,7 +22,10 @@
 
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "New Tweet", new_tweet_path %></li>
+              <li><%= link_to "New Tweet", root_path %></li>
+              <li><%= link_to "Profile", tweet_path(@tweet) %></li>
+              
+
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>
