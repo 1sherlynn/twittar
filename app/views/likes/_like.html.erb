@@ -1,20 +1,17 @@
 <span class="badge"><%= Like.where(tweet_id: @tweet.id).count %></span>
 
 
-<% if !Like.find_by(user_id: current_user, tweet_id: @tweet.id) %> 
+	<% if !Like.find_by(user_id: current_user, tweet_id: @tweet.id) %> 
 
-<%= link_to tweet_likes_path(@tweet), method: :post, remote: :true do %> 
-<span class = "like"><i class="glyphicon glyphicon-heart  g-links-heart"></i></span>
+			<%= link_to tweet_likes_path(@tweet), method: :post, remote: :true do %> 
+					<i class="glyphicon glyphicon-heart  g-links-heart" style= "color:black"></i>
+			<% end %>
 
-<% end %>
 
+	<% elsif like = Like.find_by(user_id: current_user, tweet_id: @tweet.id) %> 
+			<%= link_to tweet_like_path(@tweet, like), method: :delete, remote: :true do %>
+					<i class="glyphicon glyphicon-heart  g-links-heart" style= "color:red"></i>
+			<% end %> 
 
-<% elsif like = Like.find_by(user_id: current_user, tweet_id: @tweet.id) %> 
-
-<%= link_to tweet_like_path(@tweet, like), method: :delete, remote: :true do %>
-<span class = "unlike"><i class="glyphicon glyphicon-heart  g-links-heart"></i></span>
-
-<% end %> 
-
-<% end %> 
+	<% end %> 
 
