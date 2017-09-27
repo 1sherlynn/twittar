@@ -9,7 +9,6 @@ class RepliesController < ApplicationController
 		if reply.save
 			flash[:success] = "New Reply added."
 		else
-			byebug
 			flash[:danger] = "New Reply not added."
 		end
 		redirect_to tweets_path
