@@ -4,10 +4,11 @@ class Tweet < ApplicationRecord
   validates :user_id, presence: true
   validates :tweet, presence: true, length: { maximum: 140 }
 
-  has_many :replies
-
+  has_many :replies, dependent: :destroy 
+  has_many :likes, dependent: :destroy 
 
   mount_uploader :avatar, AvatarUploader
-  has_many :likes
+
+  
  
 end

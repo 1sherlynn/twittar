@@ -40,7 +40,6 @@ class TweetsController < ApplicationController
 	    @latestUsers = User.all.last(5)
 		@reply = Reply.new
 		@like = Like.all
-		@usertweet = Tweet.all.where(User.find_by_username(params[:id]))
 		@users = User.all 
 	end
 
