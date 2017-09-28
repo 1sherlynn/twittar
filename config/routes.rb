@@ -19,7 +19,7 @@ resources :users do
   end
   resources :follows, only: [:create, :destroy]
 
-  get '/user/:id' => 'tweets#show'
+  get '/user/:id' => 'tweets#profile'
  
 
 end

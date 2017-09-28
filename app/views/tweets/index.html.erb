@@ -3,11 +3,13 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
+           
             <h5 style="color: grey; font-size: 125%;">Home Page</h5>
             <p style="opacity: 0.5; font-size: 90%;">
               This is TWITTAR's home page where anyone can view, including non-registered guests.
           </div>
         </div>
+
         <div class="panel panel-default">
           <div class="panel-body">
              <h5 style="color: grey; font-size: 125%;">Trends for you</h5>
@@ -19,62 +21,56 @@
                 <p style="color: grey;">15k Tweets</p>
               <a href="#">#Halfway</a><br>
                 <p style="color: grey;">15k Tweets</p>
-
           </div>
         </div>
+
     </div>
 
     <div class="col-md-6">
 
 <!-- TWEET FORM --> 
-  <div style="padding-bottom: 10px;">
-  <%= render '/components/tweet_form' %>
-  </div>
+       <div style="padding-bottom: 10px;">
+            <%= render '/components/tweet_form' %>
+        </div>
 <!-- TWEET FORM --> 
 
-
-
-       <br>
+        <br>
 
       <!-- ALL TWEETS -->
-      <% for user in @users do %>
-        <% for @tweet in @tweets %>
-        <div class="panel panel-default post-panel">
-          <div class="panel-body row">
+            <% for @tweet in @tweets %>
+                <div class="panel panel-default post-panel">
+                  <div class="panel-body row">
 
-            <div class="col-xs-1">
-            <%= user_avatar %>
-            </div>
-            <div class="col-xs-11">
-              <p class="post-title"><span class="post-owner"><%= link_to User.find(@tweet.user_id).username, tweet_path(@tweet) %></a></span> 
-              <span class="post c-creation">- <%= @tweet.created_at.to_formatted_s(:short) %></span></p>
-              <p class="post-content"><%= @tweet.tweet %></p>
-            </div>
+                      <div class="col-xs-1">
+                          <%= user_avatar %>
+                      </div>
+            
+                      <div class="col-xs-11">
+                          <p class="post-title"><span class="post-owner"><%= link_to User.find(@tweet.user_id).username, tweet_path(@tweet) %></a></span> 
+                          <span class="post c-creation">- <%= @tweet.created_at.to_formatted_s(:short) %></span></p>
+                          <p class="post-content"><%= @tweet.tweet %></p>
+                      </div>
 
-            <div class="col-sm-10 col-sm-offset-1">
-    
-                <span id = "likes_section-<%=@tweet.id%>">
-                    <%= render "likes/like" %> 
-                </span>
+                      <div class="col-sm-10 col-sm-offset-1">
+                           <div id = "likes_section-<%=@tweet.id%>">
+                                <%= render "likes/like" %> 
+                            </div>
 
-                <div class = "col-md-8">
-                    <span id = "reply_section-<%=@tweet.id%>">
-                         <%= render "replies/reply", { reply: @reply } %>
-                    </span>
+                          <div class = "col-md-9">
+                                <span id = "reply_section-<%=@tweet.id%>">
+                                    <%= render "replies/reply", { reply: @reply } %>
+                                </span>
 
-                    <% @tweet.replies.each do |reply| %>
-                          <p><b><%= User.find(reply.user_id).username %></b> 
-                          <%= reply.body %></p>
-                     <% end %>
+                              <% @tweet.replies.each do |reply| %>
+                              <p><b><%= User.find(reply.user_id).username %></b> 
+                               <%= reply.body %></p>
+                              <% end %>
+                          </div>
+                      </div>
+
+                  </div>
                 </div>
-
-            </div>
-
-          </div>
-        </div>
-        <% end %>
-    <% end %>
-      <!-- /ALL TWEETS -->
+           <% end %>
 
         <div class="panel panel-default post-panel">
           <div class="panel-body row">
@@ -88,13 +84,17 @@
 
     </div>
 
+
+
     <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-body">
              <h5 style="color: grey; font-size: 125%;">Who to follow</h5>
-             <% for user in @latestUsers do %>
-               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= @tweet.id %>"><%= user.username %></a></p>
-        <% end %>
+                <% for user in @latestUsers do %>
+                      <p style="font-weight: bold; opacity: 0.85;" >
+                      <a href="/user/<%= user.id %>">
+                      <%= user.username %></a></p>
+                <% end %>
           </div>
         </div>
 
@@ -106,4 +106,5 @@
 
 
     </div>
+
 </div>
