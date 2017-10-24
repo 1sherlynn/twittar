@@ -20,6 +20,12 @@ resources :users do
   resources :follows, only: [:create, :destroy]
 
   get '/user/:id' => 'tweets#profile'
+
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
  
 
 end

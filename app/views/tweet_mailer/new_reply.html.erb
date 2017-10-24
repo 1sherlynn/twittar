@@ -1,0 +1,15 @@
+<h1>===============================</h1>
+
+<h1>You have received a new reply!</h1>
+
+<h2>Your tweet was</h2>
+<%= @tweet.tweet %>
+
+<h2>The reply was posted by <%= @reply.user.email %></h2>
+<%= @reply.body %>
+
+
+
+<%= link_to 'Click this link to see your tweet', tweet_url(id: @tweet.id) %>
+
+<h1>===============================</h1>
